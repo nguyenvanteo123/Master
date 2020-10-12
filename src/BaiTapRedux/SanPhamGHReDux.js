@@ -7,7 +7,7 @@ export default class SanPhamGHReDux extends Component {
         <td>1</td>
         <td>Iphone1</td>
         <td>
-          <img src="https://picsum.photos/50" />
+          <img src="" />
         </td>
         <td>1</td>
         <td>1000</td>

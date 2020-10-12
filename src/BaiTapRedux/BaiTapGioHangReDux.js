@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GioHangRedux from "./GioHangRedux";
 import SanPhamRedux from "./SanPhamRedux";
-import danhSachSanPham from "./data.json";
+import danhSachSanPham from "../Components/BaiTapGioHang/data.json";
 
 export default class BaiTapGioHangReDux extends Component {
   renderSanPham = () => {

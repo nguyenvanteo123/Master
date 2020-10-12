@@ -6,7 +6,46 @@ import { connect } from "react-redux";
 
 class GioHangRedux extends Component {
   renderGioHang = () => {
-    return <SanPhamGHReDux />;
+    return this.props.gioHang.map((spGioHang, index) => {
+      return (
+        <tr>
+          <td>{spGioHang.maSP}</td>
+          <td>{spGioHang.tenSP}</td>
+          <td>
+            <img src={spGioHang.hinhAnh} width={50} />
+          </td>
+          <td>
+            <button
+              onClick={() => {
+                this.props.tangGiamSoLuong(spGioHang.maSP, false);
+              }}
+            >
+              -
+            </button>
+            {spGioHang.soLuong}
+            <button
+              onClick={() => {
+                this.props.tangGiamSoLuong(spGioHang.maSP, true);
+              }}
+            >
+              +
+            </button>
+          </td>
+          <td>{spGioHang.giaBan}</td>
+          <td>{spGioHang.soLuong * spGioHang.giaBan}</td>
+          <td>
+            <button
+              className="btn btn-danger"
+              onClick={() => {
+                this.props.xoaGioHang(spGioHang.maSP);
+              }}
+            >
+              Xóa
+            </button>
+          </td>
+        </tr>
+      );
+    });
   };
   render() {
     console.log("props", this.props);
@@ -30,9 +69,31 @@ class GioHangRedux extends Component {
 //lấy state từ redux store biến thành props của componeny
 //tham số state : đại diện cho rootReducer
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (rootReducer) => {
   return {
-    gioHang: state.StateBaiTapGioHang.gioHang,
+    gioHang: rootReducer.StateBaiTapGioHang.gioHang,
   };
 };
-export default connect()(GioHangRedux); //Ket61 nối giữa gioHangReduxComponent và redux store
+//
+const mapDispatchToProps = (dispatch) => {
+  return {
+    xoaGioHang: (maSPClick) => {
+      console.log(maSPClick);
+      //Tao5 ra action gửi lên reducer
+      const action = {
+        type: "XOA_GIO_HANG",
+        maSPClick,
+      };
+      dispatch(action);
+    },
+    tangGiamSoLuong: (maSP, tangGiam) => {
+      const action = {
+        type: "TANG_GIAM_SOLUONG",
+        maSP,
+        tangGiam,
+      };
+      dispatch(action);
+    },
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(GioHangRedux); //Ket61 nối giữa gioHangReduxComponent và redux store
