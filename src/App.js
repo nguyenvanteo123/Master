@@ -13,6 +13,9 @@ import DemoProps from "./Props/DemoProps";
 import BaiTapGioHang from "./Components/BaiTapGioHang";
 import BaiTapGioHangReDux from "./BaiTapRedux/BaiTapGioHangReDux";
 import BaiTapGameXucXac from "./BaiTapGameXucXac/BaiTapGameXucXac";
+import LifeCycle from "./LifeCycle/LifeCycle";
+import FormComponent from "./FormComponent/FormComponent";
+import DanhSachNguoiDung from "./FormComponent/DanhSachNguoiDung";
 
 function App() {
   return (
@@ -28,7 +31,9 @@ function App() {
       <DemoProps /> */}
       {/* <BaiTapGioHang /> */}
       {/* <BaiTapGioHangReDux /> */}
-      <BaiTapGameXucXac/>
+      {/* <BaiTapGameXucXac /> */}
+      {/* <LifeCycle /> */}
+      <DanhSachNguoiDung />
     </div>
   );
 }
